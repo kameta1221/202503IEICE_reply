@@ -26,7 +26,7 @@ think that the paper is interesting and could be published after the revision.
 of the conditional acceptance, and other parts are optional.
 Please revise based on their comments.
 \end{screen}
-Thank you very much for your email and for the opportunity to revise 
+Thank you very much for the opportunity to revise 
 our manuscript submitted to IEICE Transactions.
 We sincerely appreciate the reviewers’ constructive and encouraging comments.
 We are pleased to know that both reviewers found our paper interesting and 
@@ -81,9 +81,9 @@ If the rationale for the numbers in the formulae is not provided, it is difficul
 We have added a comprehensive derivation of Eq. (9) - (12) in the Appendix, 
 where each constant (e.g., 7, 3, 67, 4, 11, etc.) is explained based on the buffer sizes, 
 bit widths, pipeline delays, and module structures described in Sec. 3. 
-The derivation is shown step by step using the same variables and architecture diagrams 
-to provide a transparent and reproducible basis for the estimation model.
-We believe this addition enhances the credibility and clarity of the proposed method.
+The derivation is shown step by step using the same variables and architecture diagrams.
+% to provide a transparent and reproducible basis for the estimation model.
+% We believe this addition enhances the credibility and clarity of the proposed method.
 
 \vspace{0.3cm}
 \begin{screen}
@@ -92,14 +92,14 @@ Mandatory:
 Are W, G, and L in equation (9) the BRAM usage for all layers or single layer? (Since 'd' is the number of processing layers, it implies the equation is for single layer, right?)
 \end{screen}
 Eq. (9) represents the total BRAM usage across all layers. 
-The variable d denotes the number of layers, and the formula incorporates 
-the cumulative usage of modules W, G, and L over the entire pipeline.
-We agree that it may seem as though the equation is for a single layer due to the appearance of d, 
-and we have revised the manuscript to clarify this point. 
-While it is possible to formulate BRAM usage per layer, 
-the resulting expression becomes considerably more complex.
-To address this concern, we have added a detailed derivation of Eq. (9) - (12) in the Appendix, 
-showing how the total BRAM usage is computed from per-layer contributions.
+The variable $d$ denotes the number of layers, and the formula incorporates 
+the cumulative usage of modules $W$, $G$, and $L$ over the entire pipeline.
+% We agree that it may seem as though the equation is for a single layer due to the appearance of $d$, and 
+We have revised the second sentence in Sec. 4.1 to clarify this point. 
+% While it is possible to formulate BRAM usage per layer, 
+% the resulting expression becomes considerably more complex.
+% To address this concern, we have added a detailed derivation of Eq. (9) - (12) in the Appendix, 
+% showing how the total BRAM usage is computed from per-layer contributions.
 
 \vspace{0.3cm}
 \begin{screen}
@@ -125,16 +125,16 @@ According to [10], it is ADPCM. Then, at least, the word "ADPCM" should be in th
 \end{screen}
 
 \noindent
-We are grateful for your careful review and showing typos or
+We are grateful for your careful review and showing typos and
 other problems. For each of the listed items, we have revised
 the manuscript as follows:
 \begin{enumerate}
-  \item $\mathit{n}$ is the number of pieces of input, and the definition of $\mathit{n}$ has been added to the description of Eq. (9)
-  \item We have added a brief explanation of Fig. 7 to clarify the function and structure of the module.
-  \item The x-axis in Fig. 9 and Fig. 10 is the number of layers. The figure has been corrected to replace the figure.
-  \item The word “is requires 952.7” has been replaced with “requires 952.7. ”  
-  \item It means Table1 and Table2, not graph. The word “The graph ...” has been replaced with “ Table 1 and Table 2 … .” 
-  \item The correct configuration is "7-layer and 6-input".
+  \item $\mathit{n}$ is the number of input images, and the definition of $\mathit{n}$ has been added to the sentence immediately before Eq. (9).
+  \item We have added a brief explanation of ADPCM used in Fig. 7, in the first paragraph in Sec. 3.4.
+  \item As you pointed out, the x-axis in Fig. 8 and Fig. 9 shows the number of layers. We revised the x-axis labels in Fig. 8 and Fig. 9.
+  \item The word “is requires 952.7” has been replaced with “requires 952.7.”
+  \item As you pointed out, we mean Table 1 and Table 2, not graph. The word “The graph ...” has been replaced with “ Table 1 and Table 2 … .” 
+  \item Thank you for pointing it out, it was typo. We revised to the correct configuration``7-layer and 6-input''.
 \end{enumerate}
 
 \begin{screen}
@@ -146,7 +146,9 @@ Are they consistent?
 The caption of Fig. 3 in [1] also says "Laplacian decomposition of the images and a Gaussian pyramid of the weight maps".
 [10] also says "a Laplacian pyramid of the input image and a Gaussian pyramid of the weights".
 \end{screen}
-The explanation previously provided was incorrect. The correct description should be: “Mertens' algorithm ... generates a Laplacian pyramid of the input image and a Gaussian pyramid of the weights.”
+The explanation in the original manuscript was incorrect. 
+The words ``Laplacian'' and ``Gaussian'' were reversed. 
+We revised the sentence.
 
 \vspace{0.3cm}
 \begin{screen}
@@ -166,16 +168,14 @@ In our implementation[10,11], DSP is not very important as we rarely use it, and
 \begin{screen}
 Section 5.4 in p.7: Fig. 10 uses "translucent bars", however, it is difficult to distinguish. Please try to improve (ex. adding a dotted-line border to the translucent bars).
 \end{screen}
-Added a border to the graph and replaced Fig. 10.
+We updated Fig. 10 to improve visibility.
 
 \vspace{0.3cm}
 \begin{screen}
 In the list of references, the author list of [10] is all capital (e.g. M. NISHIMURA). Please use the same style as other references (ex. M. Nishimura). "adpcm", "hrd" and
 "fpga" in the title can be capital letters
 \end{screen}
-The inconsistent capitalization has been corrected.
-
-
+Thank you for your suggestion. The inconsistent capitalization has been corrected.
 
 \section*{Reply to Reviewer B}
 \begin{screen}
@@ -204,12 +204,9 @@ Mandatory:
 1. The paper claims that DRAM usage increases latency and implementation cost. However, there is no measurement or estimation of actual system latency, either for the proposed BRAM-only design or in comparison with DRAM-based approaches. Please add comments on quantitative latency or throughput (e.g., clock frequency, cycles per frame, fps at given resolution) to support the claims of real-time capability and low latency. The authors can refer their past paper to show their system's performance.
 \end{screen}
 
-Thank you for pointing this out. In response to your comment, we have added a discussion on the system's latency and throughput performance.
-Specifically, we refer to our previous work [10,11], which presents a DRAM-based implementation of HDR image fusion using a similar algorithm.
+Thank you for pointing this out. In response to your comment, we have added a discussion on the system's latency and throughput performance in Sec. 5.5.
 To clarify and support our claims on low latency and real-time capability of the proposed BRAM-only architecture, 
-we have included the quantitative performance data (clock frequency, frame processing latency, and fps at target resolution) in Table 4 of the revised manuscript. 
-These additions demonstrate the effectiveness of the BRAM-only architecture in reducing latency and maintaining real-time throughput.
-
+we have included the quantitative performance data (clock frequency, latency, and fps at target resolution) in the main text and Table 4 of the revised manuscript. 
 
 \vspace{0.3cm}
 \begin{screen}
@@ -219,7 +216,7 @@ Mandatory:
 
 H. Peng et al., "Binary Complex Neural Network Acceleration on FPGA : (Invited Paper)," 2021 IEEE 32nd International Conference on Application-specific Systems, Architectures and Processors (ASAP), NJ, USA, 2021, pp. 85-92, doi: 10.1109/ASAP52443.2021.00021.
 \end{screen}
-In the revised manuscript, we have added a discussion in Sec. 1 to clarify the rationale behind excluding DRAM in our design.
+We have added a discussion in Sec. 1 to clarify the rationale behind excluding DRAM in our design.
 Specifically, we now include a comparison of the typical memory bandwidth and latency between DRAM and BRAM, 
 citing relevant references including the work by H. Peng et al. [9]. 
 This comparison helps justify our decision from a hardware performance perspective.
@@ -234,7 +231,7 @@ Mandatory:
 
 3. The paper lacks any comparison with CPU or ASIC-based HDR implementations, which are more common in industry. Even a brief discussion in the related work or conclusion section would help contextualize the advantages and trade-offs of the FPGA approach.
 \end{screen}
-We have added a new subsection (Sec. 5.5) to the revised manuscript, 
+We have added a new section (Sec. 5.5) to the revised manuscript, 
 where we briefly compare our FPGA-based HDR implementation 
 with CPU- and GPU-based approaches.
 This section discusses typical performance characteristics (such as latency and 
