@@ -58,6 +58,18 @@ I think it means that, for instance, the 7-layer configuration implements a comp
 However, Section 4.2 in p.5 says "in the modeling, ... compression is performed in all the layers ... to simplify the equation".
 Why the model did not estimate layers before and after the fifth layer separately? It seems not so difficult to separately estimate the resources.
 \end{screen}
+As you correctly pointed out, the actual hardware implementation applies compression 
+only to the layers after the fifth one, resulting in a partially compressed architecture. 
+However, in Sec. 4.2, we chose to simplify the resource estimation model by assuming that all layers 
+are compressed, in order to keep the equation tractable and easy to use for design space exploration.
+To clarify this point and show that we have indeed considered the layer-wise breakdown, 
+we have added a detailed derivation in the Appendix, where both compressed and uncompressed parts 
+are modeled separately. This includes the resource usage for each layer and explains how the simplified 
+model was derived based on assumptions about dominant contributors and trade-offs between accuracy and model complexity.
+% ご指摘の通り、実際のハードウェア実装では、5層目以降にのみ圧縮が適用されるため、部分的に圧縮されたアーキテクチャとなります。 しかし、セクション4.2では、式を扱いやすくし、設計空間の探索に使いやすくするために、すべてのレイヤーが圧縮されると仮定してリソース推定モデルを単純化することにしました。
+
+% この点を明確にし、実際にレイヤーごとのブレークダウンを考慮したことを示すために、付録で詳細な導出を追加しました。 これには、各レイヤーのリソース使用量が含まれ、支配的な寄与に関する仮定と、精度とモデルの複雑さのトレードオフに基づいて、簡略化されたモデルがどのように導出されたかを説明しています。
+
 
 \vspace{0.3cm}
 \begin{screen}
@@ -67,6 +79,12 @@ In p.5, equation (9) - (12) contains many "magic numbers" such as 7, 3, 67, 4, 1
 Since this part (the estimation method) would be the key of the proposed method, a detailed explanation is required.
 If the rationale for the numbers in the formulae is not provided, it is difficult to determine whether they are correct or not.
 \end{screen}
+We have added a comprehensive derivation of Eq. (9) - (12) in the Appendix, 
+where each constant (e.g., 7, 3, 67, 4, 11, etc.) is explained based on the buffer sizes, 
+bit widths, pipeline delays, and module structures described in Sec. 3. 
+The derivation is shown step by step using the same variables and architecture diagrams 
+to provide a transparent and reproducible basis for the estimation model.
+We believe this addition enhances the credibility and clarity of the proposed method.
 
 \vspace{0.3cm}
 \begin{screen}
@@ -81,7 +99,7 @@ We agree that it may seem as though the equation is for a single layer due to th
 and we have revised the manuscript to clarify this point. 
 While it is possible to formulate BRAM usage per layer, 
 the resulting expression becomes considerably more complex.
-To address this concern, we have added a detailed derivation of Eq. 9-12 in the Appendix, 
+To address this concern, we have added a detailed derivation of Eq. (9) - (12) in the Appendix, 
 showing how the total BRAM usage is computed from per-layer contributions.
 
 \vspace{0.3cm}
@@ -102,7 +120,7 @@ According to [10], it is ADPCM. Then, at least, the word "ADPCM" should be in th
 \item Section 5.3 in p.6: "The graph also shows that the increase in BRAM ..." -$>$ Which graph? Do you mean the table (Table 1)?
 
 \item Section 5.4 in p.7: "we can easily find that the 6-layer and 7-input configuration achieves the best quality..."
--> I think 5-input is better quality (MEF-SSIMd) than 7-input for the series of 6-layer (orange bars).
+-$>$ I think 5-input is better quality (MEF-SSIMd) than 7-input for the series of 6-layer (orange bars).
 
 \end{enumerate}
 \end{screen}
@@ -112,7 +130,7 @@ We are grateful for your careful review and showing typos or
 other problems. For each of the listed items, we have revised
 the manuscript as follows:
 \begin{enumerate}
-  \item $\mathit{n}$ is the number of pieces of input, and the definition of $\mathit{n}$ has been added to the description of Eq. 9
+  \item $\mathit{n}$ is the number of pieces of input, and the definition of $\mathit{n}$ has been added to the description of Eq. (9)
   \item We have added a brief explanation of Fig. 7 to clarify the function and structure of the module.
   \item The x-axis in Fig. 9 and Fig. 10 is the number of layers. The figure has been corrected to replace the figure.
   \item The word “is requires 952.7” has been replaced with “requires 952.7. ”  
@@ -149,7 +167,7 @@ In our implementation[10,11], DSP is not very important as we rarely use it, and
 \begin{screen}
 Section 5.4 in p.7: Fig. 10 uses "translucent bars", however, it is difficult to distinguish. Please try to improve (ex. adding a dotted-line border to the translucent bars).
 \end{screen}
-Changed the color of the graph and replaced Fig.10
+Added a border to the graph and replaced Fig. 10.
 
 \vspace{0.3cm}
 \begin{screen}
